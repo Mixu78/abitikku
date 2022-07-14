@@ -26,8 +26,8 @@ before_build:
 build_script:
   - ps: |
       $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
-      $env:CI = False; $env:APPVEYOR = False # make electron not try to publish
-      make electron-build
+      $env:CI = $env:APPVEYOR = False # make electron not try to publish
+      Invoke-Expression 'make electron-build 2>$null' -ErrorAction:Ignore # why are warnings piped into stderr?
 
 after_build:
   - ps: |
