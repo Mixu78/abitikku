@@ -4,13 +4,16 @@ version: '1.0.2-{build}'
 install:
   - choco install nodejs-lts --version=14.16.0
   - choco install gnuwin32-coreutils.install
-  - refreshenv
 
 before_build:
-  - make electron-develop
+  - |
+    refreshenv
+    make electron-develop
 
 build_script:
-  - make electron-build
+  - |
+    refreshenv
+    make electron-build
 
 after_build:
   - ps: |
