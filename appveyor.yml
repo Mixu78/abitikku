@@ -2,13 +2,14 @@ image: Visual Studio 2015
 version: '1.0.2-{build}'
 
 install:
-  #- choco install nodejs-lts --version=14.16.0
-  - choco install gnuwin32-coreutils.install
+  - choco install nodejs-lts --version=14.16.0
+  - mkdir make_install
+  - cd make_install
+  - wget https://downloads.sourceforge.net/project/gnuwin32/make/3.81/make-3.81.exe
+  - make-3.81.exe
 
 before_build:
   - ps: |
-      refreshenv
-      ls "C:\Program Files (x86)\GnuWin32\bin"
       $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
       make electron-develop
 
