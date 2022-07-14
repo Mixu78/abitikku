@@ -3,11 +3,12 @@ version: '1.0.2-{build}'
 
 install:
   - choco install nodejs-lts --version=14.16.0
-  - mkdir make_install
-  - cd make_install
+  - ps: mkdir "C:\Program Files (x86)\GnuWin32"
+  - cd "C:\Program Files (x86)\GnuWin32"
   # stupid sourceforge
-  - ps: wget https://jztkft.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81.exe -OutFile make-3.81.exe
-  - make-3.81.exe /S /D=C:\Program Files (x86)\GnuWin32
+  - ps: wget https://netix.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-dep.zip -OutFile make-dep.zip
+  - ps: wget https://deac-fra.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-bin.zip -OutFile make-bin.zip
+  - ps: Expand-Archive *.zip
 
 before_build:
   - ps: |
