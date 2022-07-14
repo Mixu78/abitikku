@@ -7,6 +7,8 @@ install:
 
 before_build:
   - ps: |
+      refreshenv
+      echo $env:PATH
       $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
       make electron-develop
 
