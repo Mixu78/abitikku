@@ -26,7 +26,7 @@ before_build:
 build_script:
   - ps: |
       $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
-      $env:CI = False # make etcher scripts not try to publish
+      $env:CI = False; $env:APPVEYOR = False # make electron not try to publish
       make electron-build
 
 after_build:
