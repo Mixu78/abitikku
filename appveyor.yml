@@ -5,7 +5,7 @@ install:
   - choco install nodejs-lts --version=14.16.0
   - mkdir make_install
   - cd make_install
-  - wget https://downloads.sourceforge.net/project/gnuwin32/make/3.81/make-3.81.exe
+  - ps: wget https://downloads.sourceforge.net/project/gnuwin32/make/3.81/make-3.81.exe
   - make-3.81.exe
 
 before_build:
