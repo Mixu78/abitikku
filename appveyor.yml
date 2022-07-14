@@ -2,8 +2,8 @@ image: Visual Studio 2015
 version: '1.0.2-{build}'
 
 install:
-  - choco install cmake
-  - ps: Install-Product node 14.16.0
+  - choco install nodejs-lts --version=14.16.0
+  - choco install gnuwin32-coreutils.install
 
 before_build:
   - make electron-develop
@@ -18,12 +18,3 @@ after_build:
 
 artifacts:
   - path: dist/*.exe
-
-deploy:
-  - provider: GitHub
-    artifact: /*.exe/
-    draft: false
-    prerelease: false
-    on:
-      branch: master
-      APPVEYOR_REPO_TAG: true
