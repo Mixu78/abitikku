@@ -2,22 +2,22 @@ image: Visual Studio 2017
 version: '1.0.2-{build}'
 
 install:
-  - choco install nodejs-lts --version=14.16.0
-  - ps: pushd
-  - ps: mkdir "C:\Program Files (x86)\GnuWin32"
-  - cd "C:\Program Files (x86)\GnuWin32"
-  # stupid sourceforge
-  - ps: wget https://netix.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-dep.zip -OutFile make-dep.zip
-  - ps: wget https://deac-fra.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-bin.zip -OutFile make-bin.zip
-  - ps: Expand-Archive make-dep.zip -DestinationPath .
-  - ps: Expand-Archive make-bin.zip -DestinationPath .
-  - ps: popd
+  - ps: |
+      # choco install nodejs-lts --version=14.16.0
+      pushd
+      cd $(mkdir "C:\Program Files (x86)\GnuWin32")
+      wget https://netix.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-dep.zip -OutFile make-dep.zip
+      wget https://deac-fra.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-bin.zip -OutFile make-bin.zip
+      Expand-Archive make-dep.zip -DestinationPath .
+      Expand-Archive make-bin.zip -DestinationPath .
+      popd
 
 # For some reason random messages end up as stderr so we just disable everything
 before_build:
   - ps: |
-      $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
-      make electron-develop *>$null | Out-Null
+      Write-Error test
+      # $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
+      # make electron-develop *>$null | Out-Null
 
 build_script:
   - ps: |
