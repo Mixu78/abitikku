@@ -6,7 +6,7 @@ install:
   - mkdir make_install
   - cd make_install
   # stupid sourceforge
-  - ps: wget https://jztkft.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81.exe
+  - ps: wget https://jztkft.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81.exe -OutFile make-3.81.exe
   - make-3.81.exe
 
 before_build:
