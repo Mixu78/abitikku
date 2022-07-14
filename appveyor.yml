@@ -3,6 +3,7 @@ version: '1.0.2-{build}'
 
 install:
   - choco install nodejs-lts --version=14.16.0
+  - ps: pushd
   - ps: mkdir "C:\Program Files (x86)\GnuWin32"
   - cd "C:\Program Files (x86)\GnuWin32"
   # stupid sourceforge
@@ -10,6 +11,7 @@ install:
   - ps: wget https://deac-fra.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-bin.zip -OutFile make-bin.zip
   - ps: Expand-Archive make-dep.zip -DestinationPath .
   - ps: Expand-Archive make-bin.zip -DestinationPath .
+  - ps: popd
 
 before_build:
   - ps: |
