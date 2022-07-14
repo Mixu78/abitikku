@@ -21,7 +21,11 @@ before_build:
 build_script:
   - ps: |
       $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
-      make electron-build 2>$null
+      $tmp = $ErrorActionPreference
+      $ErrorActionPreference = "SilentlyContinue"
+      make electron-build 2>$null | Out-Null
+      $ErrorActionPreference = $tmp
+      exit 0
 
 after_build:
   - ps: |
