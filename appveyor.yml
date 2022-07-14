@@ -15,7 +15,7 @@ install:
 # For some reason random messages end up as stderr so we just disable everything
 before_build:
   - ps: |
-      Write-Error test
+      Write-Error test *>$null | Out-Null
       # $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
       # make electron-develop *>$null | Out-Null
 
