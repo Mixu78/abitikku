@@ -3,7 +3,7 @@ version: '1.0.2-{build}'
 
 install:
   - ps: |
-      # choco install nodejs-lts --version=14.16.0
+      choco install nodejs-lts --version=14.16.0
       pushd
       cd $(mkdir "C:\Program Files (x86)\GnuWin32")
       wget https://netix.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-dep.zip -OutFile make-dep.zip
@@ -15,9 +15,8 @@ install:
 # For some reason random messages end up as stderr so we just disable everything
 before_build:
   - ps: |
-      Invoke-Expression 'Write-Error test *>$null | Out-Null' -ErrorAction:Ignore
-      # $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
-      # make electron-develop *>$null | Out-Null
+      $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
+      Invoke-Expression 'make electron-develop 2>$null' -ErrorAction:Ignore
 
 build_script:
   - ps: |
