@@ -4,8 +4,11 @@ version: '1.0.2-{build}'
 #TODO investigate no-progress choco
 
 install:
+  - choco install jq
+  - choco install nodejs-lts --version=14.16.0
+  - choco install curl
+  - pip install -r requirements.txt
   - ps: |
-      choco install nodejs-lts --version=14.16.0
       pushd
       cd $(mkdir "C:\Program Files (x86)\GnuWin32")
       wget https://netix.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-dep.zip -OutFile make-dep.zip
