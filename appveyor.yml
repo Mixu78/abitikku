@@ -1,6 +1,8 @@
 image: Visual Studio 2017
 version: '1.0.2-{build}'
 
+#TODO investigate no-progress choco
+
 install:
   - ps: |
       choco install nodejs-lts --version=14.16.0
@@ -21,7 +23,7 @@ before_build:
 build_script:
   - ps: |
       $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
-      make electron-build 2>$null
+      make electron-build
 
 after_build:
   - ps: |
