@@ -8,7 +8,8 @@ install:
   # stupid sourceforge
   - ps: wget https://netix.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-dep.zip -OutFile make-dep.zip
   - ps: wget https://deac-fra.dl.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-bin.zip -OutFile make-bin.zip
-  - ps: Expand-Archive *.zip
+  - ps: Expand-Archive make-dep.zip -DestinationPath .
+  - ps: Expand-Archive make-bin.zip -DestinationPath .
 
 before_build:
   - ps: |
