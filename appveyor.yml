@@ -16,12 +16,12 @@ install:
 before_build:
   - ps: |
       $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
-      make electron-develop
+      make electron-develop 2>$null
 
 build_script:
   - ps: |
       $env:PATH = "C:\Program Files (x86)\GnuWin32\bin;" + $env:PATH
-      make electron-build
+      make electron-build 2>$null
 
 after_build:
   - ps: |
